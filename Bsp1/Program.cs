@@ -2,6 +2,7 @@
 using System.Text;
 using System.Linq;
 using System;
+using Bsp1.Models;
 
 namespace Bsp1
 {
@@ -21,11 +22,12 @@ namespace Bsp1
             // Headline
             Console.WriteLine($"--- {today.ToString("yyyy_MM_dd")}_Login_Hash ---");
 
+            Person personReg = new Person(){Name= "", Password = "", Hash= ""};
+            Person personLogin = new Person();
             int selection = 0;
+
+            // Evertime use here the same Salt
             byte[] saltArray = GetSalt();
-            string nameReg = "";
-            string pwReg = "";
-            string pwRegHash = "";
 
             do
             {
@@ -43,13 +45,14 @@ namespace Bsp1
                             Console.WriteLine("--- TO REGISTER ---");
 
                             Console.Write($"Name (min {NAME_MIN}/max {NAME_MAX}): ");
-                            nameReg = Console.ReadLine();
+                            personReg.Name = Console.ReadLine();
+
                             Console.Write($"Password (min {PASSWORD_MIN}/max {PASSWORD_MAX}): ");
                             // string pwReg = Console.ReadLine();
-                            pwReg = ReadPasswordFromConsole();
+                            personReg.Password = ReadPasswordFromConsole();
 
                             // check with status name and password shorter than X and longer than X (CONST)
-                            Status statusReg = CheckLenght(nameReg, pwReg);
+                            Status statusReg = CheckLenght(personReg.Name, personReg.Password);
 
                             // Coloring the output
                             if (statusReg.statusBool) Console.ForegroundColor = ConsoleColor.Green;
@@ -60,31 +63,31 @@ namespace Bsp1
                             Console.Write(" / ");
 
                             // How strong is the password with coloring
-                            string strong = IsStrongPassword(pwReg);
+                            string strong = IsStrongPassword(personReg.Password);
                             if (strong.Contains("NOT")) Console.ForegroundColor = ConsoleColor.Red;
                             Console.WriteLine(strong);
                             Console.ForegroundColor = ConsoleColor.White;
 
                             // Password hashen
-                            pwRegHash = CreateSha256Hash(pwReg, saltArray);
+                            personReg.Hash = CreateSha256Hash(personReg.Password, saltArray);
                             break;
+
                         case 2:
-                            // Login
                             Console.WriteLine();
                             Console.WriteLine("--- LOGIN ---");
 
                             Console.Write($"Name (min {NAME_MIN}/max {NAME_MAX}): ");
-                            string nameLogin = Console.ReadLine();
+                            personLogin.Name = Console.ReadLine();
 
                             Console.Write($"Password (min {PASSWORD_MIN}/max {PASSWORD_MAX}): ");
                             // string pwLogin = Console.ReadLine();
-                            string pwLogin = ReadPasswordFromConsole();
+                            personLogin.Password = ReadPasswordFromConsole();
 
                             // Password hashen
-                            string pwLoginHash = CreateSha256Hash(pwLogin, saltArray);
+                            string pwLoginHash = CreateSha256Hash(personLogin.Password, saltArray);
 
                             // Check
-                            if (nameReg.Equals(nameLogin) && pwRegHash.Equals(pwLoginHash))
+                            if (personReg.Name.Equals(personLogin.Name) && personReg.Hash.Equals(personLogin.Hash))
                             {
                                 Console.ForegroundColor = ConsoleColor.Green;
                                 Console.WriteLine("--- CONGRATULATIONS! You are logged in ---");
@@ -93,9 +96,9 @@ namespace Bsp1
                                 // Info
                                 Console.WriteLine(@$"
 > INFO:
-> Name: {nameReg}
-> Password: {pwReg}
-> Hash: {pwRegHash}
+> Name: {personReg.Name}
+> Password: {personReg.Password}
+> Hash: {personReg.Hash}
 ");
 
                                 // Logout and close
