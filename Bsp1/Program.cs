@@ -65,7 +65,7 @@ namespace Bsp1
 
                     // Info
                     Console.WriteLine(@$"
-INFO:
+> INFO:
 > Name: {nameReg}
 > Password: {pwReg}
 > Hash: {pwRegHash}
