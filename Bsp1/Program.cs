@@ -26,7 +26,7 @@ namespace Bsp1
             byte[] saltByte = GetSalt();
             // Default Name and Hash for the check by Login, because its an error when no default values
             // Default salt, to have a Hash in the personLogin to cant login, when you dont regist
-            Person personReg = new Person() { Name = "", Password = "", Hash="", Salt = saltByte };
+            Person personReg = new Person() { Name = "", Password = "", Hash = "", Salt = saltByte };
             Person personLogin = new Person();
             int selection = 0;
 
@@ -61,21 +61,30 @@ namespace Bsp1
 
                             Console.Write(statusReg.statusString);
                             Console.ForegroundColor = ConsoleColor.White;
+
                             Console.Write(" / ");
+                            if (statusReg.statusBool)
+                            {
+                                // How strong is the password with coloring
+                                string strong = IsStrongPassword(personReg.Password);
+                                if (strong.Contains("NOT")) Console.ForegroundColor = ConsoleColor.Red;
+                                Console.WriteLine(strong);
+                                Console.ForegroundColor = ConsoleColor.White;
 
-                            // How strong is the password with coloring
-                            string strong = IsStrongPassword(personReg.Password);
-                            if (strong.Contains("NOT")) Console.ForegroundColor = ConsoleColor.Red;
-                            Console.WriteLine(strong);
-                            Console.ForegroundColor = ConsoleColor.White;
+                                // Create salt
+                                personReg.Salt = GetSalt();
 
-                            // Create salt
-                            personReg.Salt = GetSalt();
-
-                            // Password hashen
-                            personReg.Hash = CreateSha256Hash(personReg.Password, personReg.Salt);
-                            break;
-
+                                // Password hashen
+                                personReg.Hash = CreateSha256Hash(personReg.Password, personReg.Salt);
+                                break;
+                            }
+                            else
+                            {
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.WriteLine("No regist");
+                                Console.ForegroundColor = ConsoleColor.White;
+                                break;
+                            }
                         case 2:
                             Console.WriteLine();
                             Console.WriteLine("--- LOGIN ---");
