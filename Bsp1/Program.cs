@@ -7,7 +7,7 @@ namespace Bsp1
 {
     internal class Program
     {
-        
+
         // Const for the name and password length 
         const int NAME_MIN = 3;
         const int NAME_MAX = 16;
@@ -16,6 +16,8 @@ namespace Bsp1
 
         static void Main(string[] args)
         {
+
+
             // Date
             DateTime today = DateTime.Now;
             Console.WriteLine($"--- {today.ToString("yyyy_MM_dd")}_Login_Hash ---");
@@ -31,14 +33,22 @@ namespace Bsp1
 
             // check with status name and password shorter than X and longer than X (CONST)
             Status statusReg = CheckLenght(nameReg, pwReg);
-            Console.Write(statusReg.statusString);
+
+            // Coloring the output
+            if (statusReg.statusBool) Console.ForegroundColor = ConsoleColor.Green;
+            else Console.ForegroundColor = ConsoleColor.Red;
+
+            Console.WriteLine(statusReg.statusString);
+            if (Console.ForegroundColor == ConsoleColor.Red) Console.ForegroundColor = ConsoleColor.White;
+
+            // How strong is the password with coloring
+            string strong = IsStrongPassword(pwReg);
+            if (strong.Contains("NOT")) Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(strong);
+            Console.ForegroundColor = ConsoleColor.White;
 
             if (statusReg.statusBool)
             {
-                // How strong is the password
-                string strong = IsStrongPassword(pwReg);
-                Console.WriteLine(strong);
-
                 // Salt erzeugen
                 byte[] saltArray = GetSalt();
 
@@ -62,7 +72,9 @@ namespace Bsp1
                 // Check
                 if (nameReg.Equals(nameLogin) && pwRegHash.Equals(pwLoginHash))
                 {
+                    Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("--- CONGRATULATIONS! You are logged in ---");
+                    Console.ForegroundColor = ConsoleColor.White;
 
                     // Info
                     Console.WriteLine(@$"
@@ -77,7 +89,13 @@ namespace Bsp1
                     Console.Read();
                     Console.WriteLine("--- LOGOUT ---");
                 }
-                else Console.WriteLine("--- MISTAKE! Name or password is incorrect ---");
+
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("--- MISTAKE! Name or password is incorrect ---");
+                    Console.ForegroundColor = ConsoleColor.White;
+                }
             }
         }
 
@@ -273,8 +291,8 @@ namespace Bsp1
             }
 
             // return
-            if (result) isStrongPW = " and password is strong!";
-            else isStrongPW = ", but password is NOT strong!";
+            if (result) isStrongPW = "Password is strong!";
+            else isStrongPW = $"Password is NOT strong!";
 
             return isStrongPW;
         }
