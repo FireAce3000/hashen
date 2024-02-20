@@ -32,89 +32,96 @@ namespace Bsp1
                 // Selection
                 Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.Write("[1] to regist [2] login [3] exit : ");
-                selection = int.Parse(Console.ReadLine());
-                Console.ForegroundColor = ConsoleColor.White;
-
-                switch (selection)
+                try
                 {
-                    case 1:
-                        Console.WriteLine("--- TO REGISTER ---");
+                    selection = int.Parse(Console.ReadLine());
+                    Console.ForegroundColor = ConsoleColor.White;
 
-                        Console.Write($"Name (min {NAME_MIN}/max {NAME_MAX}): ");
-                        nameReg = Console.ReadLine();
-                        Console.Write($"Password (min {PASSWORD_MIN}/max {PASSWORD_MAX}): ");
-                        // string pwReg = Console.ReadLine();
-                        pwReg = ReadPasswordFromConsole();
+                    switch (selection)
+                    {
+                        case 1:
+                            Console.WriteLine("--- TO REGISTER ---");
 
+                            Console.Write($"Name (min {NAME_MIN}/max {NAME_MAX}): ");
+                            nameReg = Console.ReadLine();
+                            Console.Write($"Password (min {PASSWORD_MIN}/max {PASSWORD_MAX}): ");
+                            // string pwReg = Console.ReadLine();
+                            pwReg = ReadPasswordFromConsole();
 
-                        // check with status name and password shorter than X and longer than X (CONST)
-                        Status statusReg = CheckLenght(nameReg, pwReg);
+                            // check with status name and password shorter than X and longer than X (CONST)
+                            Status statusReg = CheckLenght(nameReg, pwReg);
 
-                        // Coloring the output
-                        if (statusReg.statusBool) Console.ForegroundColor = ConsoleColor.Green;
-                        else Console.ForegroundColor = ConsoleColor.Red;
+                            // Coloring the output
+                            if (statusReg.statusBool) Console.ForegroundColor = ConsoleColor.Green;
+                            else Console.ForegroundColor = ConsoleColor.Red;
 
-                        Console.Write(statusReg.statusString);
-                        Console.ForegroundColor = ConsoleColor.White;
-                        Console.Write(" / ");
+                            Console.Write(statusReg.statusString);
+                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.Write(" / ");
 
-                        // How strong is the password with coloring
-                        string strong = IsStrongPassword(pwReg);
-                        if (strong.Contains("NOT")) Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine(strong);
-                        Console.ForegroundColor = ConsoleColor.White;
-
-                        // Password hashen
-                        pwRegHash = CreateSha256Hash(pwReg, saltArray);
-                        break;
-                    case 2:
-                        // Login
-                        Console.WriteLine();
-                        Console.WriteLine("--- LOGIN ---");
-
-                        Console.Write($"Name (min {NAME_MIN}/max {NAME_MAX}): ");
-                        string nameLogin = Console.ReadLine();
-
-                        Console.Write($"Password (min {PASSWORD_MIN}/max {PASSWORD_MAX}): ");
-                        // string pwLogin = Console.ReadLine();
-                        string pwLogin = ReadPasswordFromConsole();
-
-                        // Password hashen
-                        string pwLoginHash = CreateSha256Hash(pwLogin, saltArray);
-
-                        // Check
-                        if (nameReg.Equals(nameLogin) && pwRegHash.Equals(pwLoginHash))
-                        {
-                            Console.ForegroundColor = ConsoleColor.Green;
-                            Console.WriteLine("--- CONGRATULATIONS! You are logged in ---");
+                            // How strong is the password with coloring
+                            string strong = IsStrongPassword(pwReg);
+                            if (strong.Contains("NOT")) Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine(strong);
                             Console.ForegroundColor = ConsoleColor.White;
 
-                            // Info
-                            Console.WriteLine(@$"
+                            // Password hashen
+                            pwRegHash = CreateSha256Hash(pwReg, saltArray);
+                            break;
+                        case 2:
+                            // Login
+                            Console.WriteLine();
+                            Console.WriteLine("--- LOGIN ---");
+
+                            Console.Write($"Name (min {NAME_MIN}/max {NAME_MAX}): ");
+                            string nameLogin = Console.ReadLine();
+
+                            Console.Write($"Password (min {PASSWORD_MIN}/max {PASSWORD_MAX}): ");
+                            // string pwLogin = Console.ReadLine();
+                            string pwLogin = ReadPasswordFromConsole();
+
+                            // Password hashen
+                            string pwLoginHash = CreateSha256Hash(pwLogin, saltArray);
+
+                            // Check
+                            if (nameReg.Equals(nameLogin) && pwRegHash.Equals(pwLoginHash))
+                            {
+                                Console.ForegroundColor = ConsoleColor.Green;
+                                Console.WriteLine("--- CONGRATULATIONS! You are logged in ---");
+                                Console.ForegroundColor = ConsoleColor.White;
+
+                                // Info
+                                Console.WriteLine(@$"
 > INFO:
 > Name: {nameReg}
 > Password: {pwReg}
 > Hash: {pwRegHash}
 ");
 
-                            // Logout and close
-                            Console.Write("Enter to logout");
-                            Console.Read();
-                            Console.WriteLine("--- LOGOUT ---");
-                        }
-                        else
-                        {
-                            Console.ForegroundColor = ConsoleColor.Red;
-                            Console.WriteLine("--- MISTAKE! Name or password is incorrect ---");
-                            Console.ForegroundColor = ConsoleColor.White;
-                        }
-                        break;
-                    case 3:
-                        Console.WriteLine("--- EXIT ---");
-                        break;
-                    default:
-                        Console.WriteLine("Input is not correct");
-                        break;
+                                // Logout and close
+                                Console.Write("Enter to logout");
+                                Console.Read();
+                                Console.WriteLine("--- LOGOUT ---");
+                            }
+                            else
+                            {
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.WriteLine("--- MISTAKE! Name or password is incorrect ---");
+                                Console.ForegroundColor = ConsoleColor.White;
+                            }
+                            break;
+                        case 3:
+                            Console.WriteLine("--- EXIT ---");
+                            break;
+                        default:
+                            Console.WriteLine("Input isnt correct");
+                            break;
+                    }
+                }
+                catch
+                {
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine("input isnt correct");
                 }
             } while (selection != 3);
         }
