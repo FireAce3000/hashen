@@ -46,6 +46,7 @@ namespace Bsp1
                         // string pwReg = Console.ReadLine();
                         pwReg = ReadPasswordFromConsole();
 
+
                         // check with status name and password shorter than X and longer than X (CONST)
                         Status statusReg = CheckLenght(nameReg, pwReg);
 
