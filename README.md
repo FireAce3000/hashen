@@ -1,7 +1,7 @@
 # hashen
 Login with hashing the passsword
 
-### Create a repo
+## Create a repo
 
 Create a local folder
 ```bash
@@ -13,7 +13,7 @@ Clone the repo from github to local folger
 git clone GITHUB_REPO LOCAL_FOLDER
 ```
 
-### Update a repo
+## Update a repo
 
 Add to the changes
 ```bash
@@ -30,7 +30,7 @@ Push the commit to github
 git push
 ```
 
-### Git commands
+## Git commands
 
 Check the changes to github
 ```bash
@@ -48,4 +48,8 @@ git merge
 
 ```bash
 git checkout
+```
+Dislplay all branches
+```bash
+git branch
 ```
