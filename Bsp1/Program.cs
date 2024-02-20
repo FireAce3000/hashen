@@ -29,10 +29,10 @@ namespace Bsp1
             string pwReg = ReadPasswordFromConsole();
 
             // check with status name and password shorter than X and longer than X (CONST)
-            Status status = CheckLenght(nameReg, pwReg);
-            Console.Write(status.statusString);
+            Status statusReg = CheckLenght(nameReg, pwReg);
+            Console.Write(statusReg.statusString);
 
-            if (status.statusBool)
+            if (statusReg.statusBool)
             {
                 // How strong is the password
                 string strong = IsStrongPassword(pwReg);
@@ -48,10 +48,10 @@ namespace Bsp1
                 Console.WriteLine();
                 Console.WriteLine("--- LOGIN ---");
 
-                Console.Write("Name: ");
+                Console.Write($"Name (min {NAME_MIN}/max {NAME_MAX}): ");
                 string nameLogin = Console.ReadLine();
 
-                Console.Write("Password: ");
+                Console.Write($"Password (min {PASSWORD_MIN}/max {PASSWORD_MAX}): ");
                 // string pwLogin = Console.ReadLine();
                 string pwLogin = ReadPasswordFromConsole();
 

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/kevin/Documents/Csharp/IT-Security/passwordHash_2/20240208 Login_Hash/Bsp1/Bsp1.csproj": {}
+    "/home/kevin/Documents/Csharp/IT-Security/hashen/Bsp1/Bsp1.csproj": {}
   },
   "projects": {
-    "/home/kevin/Documents/Csharp/IT-Security/passwordHash_2/20240208 Login_Hash/Bsp1/Bsp1.csproj": {
+    "/home/kevin/Documents/Csharp/IT-Security/hashen/Bsp1/Bsp1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/kevin/Documents/Csharp/IT-Security/passwordHash_2/20240208 Login_Hash/Bsp1/Bsp1.csproj",
+        "projectUniqueName": "/home/kevin/Documents/Csharp/IT-Security/hashen/Bsp1/Bsp1.csproj",
         "projectName": "Bsp1",
-        "projectPath": "/home/kevin/Documents/Csharp/IT-Security/passwordHash_2/20240208 Login_Hash/Bsp1/Bsp1.csproj",
+        "projectPath": "/home/kevin/Documents/Csharp/IT-Security/hashen/Bsp1/Bsp1.csproj",
         "packagesPath": "/home/kevin/.nuget/packages/",
-        "outputPath": "/home/kevin/Documents/Csharp/IT-Security/passwordHash_2/20240208 Login_Hash/Bsp1/obj/",
+        "outputPath": "/home/kevin/Documents/Csharp/IT-Security/hashen/Bsp1/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/kevin/.nuget/NuGet/NuGet.Config"
