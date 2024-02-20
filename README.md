@@ -30,26 +30,46 @@ Push the commit to github
 git push
 ```
 
-## Git commands
+## Merge a branch to main/master
 
 Check the changes to github
 ```bash
 git status
 ```
 
+Display all branches
+```bash
+git branch -a
+```
+
+Delete all branches with status
+```bash
+git branch -v
+```
+
+Switch the branch
+```bash
+git checkout BRANCH
+```
+
+Inklude the branch in the acutally branch
+```bash
+git merge BRANCH
+```
+
+## Git commands
+
 Integreate Changes 
 ```bash
 git rebase BASE
 ```
 
+Delete a branch
 ```bash
-git merge
+git branch -v
 ```
 
+Delete a branch
 ```bash
-git checkout
-```
-Dislplay all branches
-```bash
-git branch
+git branch -d BRANCH
 ```
