@@ -15,7 +15,7 @@ namespace Bsp1
 
         static void Main(string[] args)
         {
-            // DateTime
+            // Date
             DateTime today = DateTime.Now;
             Console.WriteLine($"--- {today.ToString("yyyy_MM_dd")}_Login_Hash ---");
 
