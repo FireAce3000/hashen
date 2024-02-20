@@ -7,6 +7,7 @@ namespace Bsp1
 {
     internal class Program
     {
+        
         // Const for the name and password length 
         const int NAME_MIN = 3;
         const int NAME_MAX = 16;
