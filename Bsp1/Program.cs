@@ -22,11 +22,11 @@ namespace Bsp1
             // Headline
             Console.WriteLine($"--- {today.ToString("yyyy_MM_dd")}_Login_Hash ---");
 
-            Person personReg = new Person(){Name= "", Password = "", Hash= ""};
+            Person personReg = new Person(){Name= "", Password = ""};
             Person personLogin = new Person();
             int selection = 0;
 
-            // Evertime use here the same Salt
+            // Evertime use here the same Salt...
             byte[] saltArray = GetSalt();
 
             do
@@ -109,7 +109,7 @@ namespace Bsp1
                             else
                             {
                                 Console.ForegroundColor = ConsoleColor.Red;
-                                Console.WriteLine("--- MISTAKE! Name or password is incorrect ---");
+                                Console.WriteLine("--- MISTAKE! Name or password are not correct ---");
                                 Console.ForegroundColor = ConsoleColor.White;
                             }
                             break;
@@ -124,7 +124,7 @@ namespace Bsp1
                 catch
                 {
                     Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine("input isnt correct");
+                    Console.WriteLine("Input isnt correct");
                 }
             } while (selection != 3);
         }

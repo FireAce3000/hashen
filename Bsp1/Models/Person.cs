@@ -14,6 +14,6 @@ namespace Bsp1.Models
 
         public string Name { get; set; }
         public string Password { get; set; }
-        public string Hash { get; set; }
+        public string? Hash { get; set; }
     }
 }
