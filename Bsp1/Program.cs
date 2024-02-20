@@ -7,7 +7,6 @@ namespace Bsp1
 {
     internal class Program
     {
-
         // Const for the name and password length 
         const int NAME_MIN = 3;
         const int NAME_MAX = 16;
@@ -16,8 +15,6 @@ namespace Bsp1
 
         static void Main(string[] args)
         {
-
-
             // Date
             DateTime today = DateTime.Now;
             Console.WriteLine($"--- {today.ToString("yyyy_MM_dd")}_Login_Hash ---");
@@ -38,9 +35,10 @@ namespace Bsp1
             if (statusReg.statusBool) Console.ForegroundColor = ConsoleColor.Green;
             else Console.ForegroundColor = ConsoleColor.Red;
 
-            Console.WriteLine(statusReg.statusString);
-            if (Console.ForegroundColor == ConsoleColor.Red) Console.ForegroundColor = ConsoleColor.White;
-
+            Console.Write(statusReg.statusString);
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write(" / ");
+            
             // How strong is the password with coloring
             string strong = IsStrongPassword(pwReg);
             if (strong.Contains("NOT")) Console.ForegroundColor = ConsoleColor.Red;
@@ -89,7 +87,6 @@ namespace Bsp1
                     Console.Read();
                     Console.WriteLine("--- LOGOUT ---");
                 }
-
                 else
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
