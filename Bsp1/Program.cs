@@ -22,18 +22,19 @@ namespace Bsp1
             // Headline
             Console.WriteLine($"--- {today.ToString("yyyy_MM_dd")}_Login_Hash ---");
 
-            Person personReg = new Person(){Name= "", Password = ""};
+            // Default values
+            byte[] saltByte = GetSalt();
+            // Default Name and Hash for the check by Login, because its an error when no default values
+            // Default salt, to have a Hash in the personLogin to cant login, when you dont regist
+            Person personReg = new Person() { Name = "", Password = "", Hash="", Salt = saltByte };
             Person personLogin = new Person();
             int selection = 0;
-
-            // Evertime use here the same Salt...
-            byte[] saltArray = GetSalt();
 
             do
             {
                 // Selection
                 Console.ForegroundColor = ConsoleColor.Cyan;
-                Console.Write("[1] to regist [2] login [3] exit : ");
+                Console.Write("Choose one [1] to regist [2] login [3] exit : ");
                 try
                 {
                     selection = int.Parse(Console.ReadLine());
@@ -68,8 +69,11 @@ namespace Bsp1
                             Console.WriteLine(strong);
                             Console.ForegroundColor = ConsoleColor.White;
 
+                            // Create salt
+                            personReg.Salt = GetSalt();
+
                             // Password hashen
-                            personReg.Hash = CreateSha256Hash(personReg.Password, saltArray);
+                            personReg.Hash = CreateSha256Hash(personReg.Password, personReg.Salt);
                             break;
 
                         case 2:
@@ -84,7 +88,7 @@ namespace Bsp1
                             personLogin.Password = ReadPasswordFromConsole();
 
                             // Password hashen
-                            string pwLoginHash = CreateSha256Hash(personLogin.Password, saltArray);
+                            personLogin.Hash = CreateSha256Hash(personLogin.Password, personReg.Salt);
 
                             // Check
                             if (personReg.Name.Equals(personLogin.Name) && personReg.Hash.Equals(personLogin.Hash))
@@ -140,7 +144,7 @@ namespace Bsp1
 
             do
             {
-                // save the chars, but dont see it in the console
+                // Save the chars, but dont see it in the console
                 key = Console.ReadKey(true);
 
                 // When Enter or Backspace
@@ -157,7 +161,7 @@ namespace Bsp1
                 }
             } while (key.Key != ConsoleKey.Enter);
 
-            // next line
+            // Next line
             Console.WriteLine();
 
             return password;
@@ -321,8 +325,8 @@ namespace Bsp1
             }
 
             // return
-            if (result) isStrongPW = "Password is strong!";
-            else isStrongPW = $"Password is NOT strong!";
+            if (result) isStrongPW = "Password is strong";
+            else isStrongPW = "Password is NOT strong!";
 
             return isStrongPW;
         }
