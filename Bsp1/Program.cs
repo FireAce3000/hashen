@@ -17,9 +17,11 @@ namespace Bsp1
         {
             // Date
             DateTime today = DateTime.Now;
-            Console.WriteLine($"--- {today.ToString("yyyy_MM_dd")}_Login_Hash ---");
-            int selection = 0;
 
+            // Headline
+            Console.WriteLine($"--- {today.ToString("yyyy_MM_dd")}_Login_Hash ---");
+
+            int selection = 0;
             byte[] saltArray = GetSalt();
             string nameReg = "";
             string pwReg = "";
@@ -27,8 +29,11 @@ namespace Bsp1
 
             do
             {
+                // Selection
+                Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.Write("[1] to regist [2] login [3] exit : ");
                 selection = int.Parse(Console.ReadLine());
+                Console.ForegroundColor = ConsoleColor.White;
 
                 switch (selection)
                 {
@@ -107,7 +112,7 @@ namespace Bsp1
                         Console.WriteLine("--- EXIT ---");
                         break;
                     default:
-                        Console.WriteLine("Input not correct");
+                        Console.WriteLine("Input is not correct");
                         break;
                 }
             } while (selection != 3);
