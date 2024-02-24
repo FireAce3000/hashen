@@ -8,4 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Bsp1
-build_property.ProjectDir = /home/kevin/Documents/Csharp/IT-Security/hashen/Bsp1/
+build_property.ProjectDir = C:\Users\Kevin\OneDrive - EDU BBRZ Reha\AP01\IT-Security\git_hashen\hashen\Bsp1\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 

@@ -1,10 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "bEzQDOX6jsnTfI6m0QoDqK/xWlvQAfiLHDTuqjCh/bguP9d5QjHiUTb3otQKIl4jT7yRQJVLDa44AUlJ/kzEWw==",
+  "dgSpecHash": "/GPHtYczyD6D3pSPf6o2r6VBNkD2SlANdMaR98xZVV3XQ0MB3IQt/mbzVyF8V/xHw1meZMmOYoJUc9YsghKJyA==",
   "success": true,
-  "projectFilePath": "/home/kevin/Documents/Csharp/IT-Security/hashen/Bsp1/Bsp1.csproj",
-  "expectedPackageFiles": [
-    "/home/kevin/.nuget/packages/microsoft.netcore.app.host.linux-x64/6.0.27/microsoft.netcore.app.host.linux-x64.6.0.27.nupkg.sha512"
-  ],
+  "projectFilePath": "C:\\Users\\Kevin\\OneDrive - EDU BBRZ Reha\\AP01\\IT-Security\\git_hashen\\hashen\\Bsp1\\Bsp1.csproj",
+  "expectedPackageFiles": [],
   "logs": []
 }

@@ -1,25 +1,32 @@
 {
   "format": 1,
   "restore": {
-    "/home/kevin/Documents/Csharp/IT-Security/hashen/Bsp1/Bsp1.csproj": {}
+    "C:\\Users\\Kevin\\OneDrive - EDU BBRZ Reha\\AP01\\IT-Security\\git_hashen\\hashen\\Bsp1\\Bsp1.csproj": {}
   },
   "projects": {
-    "/home/kevin/Documents/Csharp/IT-Security/hashen/Bsp1/Bsp1.csproj": {
+    "C:\\Users\\Kevin\\OneDrive - EDU BBRZ Reha\\AP01\\IT-Security\\git_hashen\\hashen\\Bsp1\\Bsp1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/kevin/Documents/Csharp/IT-Security/hashen/Bsp1/Bsp1.csproj",
+        "projectUniqueName": "C:\\Users\\Kevin\\OneDrive - EDU BBRZ Reha\\AP01\\IT-Security\\git_hashen\\hashen\\Bsp1\\Bsp1.csproj",
         "projectName": "Bsp1",
-        "projectPath": "/home/kevin/Documents/Csharp/IT-Security/hashen/Bsp1/Bsp1.csproj",
-        "packagesPath": "/home/kevin/.nuget/packages/",
-        "outputPath": "/home/kevin/Documents/Csharp/IT-Security/hashen/Bsp1/obj/",
+        "projectPath": "C:\\Users\\Kevin\\OneDrive - EDU BBRZ Reha\\AP01\\IT-Security\\git_hashen\\hashen\\Bsp1\\Bsp1.csproj",
+        "packagesPath": "C:\\Users\\Kevin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Kevin\\OneDrive - EDU BBRZ Reha\\AP01\\IT-Security\\git_hashen\\hashen\\Bsp1\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "/home/kevin/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\Kevin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -48,18 +55,12 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.NETCore.App.Host.linux-x64",
-              "version": "[6.0.27, 6.0.27]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/7.0.116/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }
